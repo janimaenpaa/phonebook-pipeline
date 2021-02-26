@@ -34,10 +34,6 @@ const unknownEndpoint = (_request, response) => {
   response.status(404).send({ error: "unknown endpoint" })
 }
 
-app.get("/", (_req, res) => {
-  res.send("<h1>Hello World!</h1>")
-})
-
 app.get("/info", (_req, res) => {
   Person.countDocuments({}, (err, result) => {
     if (err) {
@@ -118,7 +114,8 @@ app.delete("/api/persons/:id", (req, res, next) => {
 app.use(errorHandler)
 app.use(unknownEndpoint)
 
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 3000
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`)
 })
