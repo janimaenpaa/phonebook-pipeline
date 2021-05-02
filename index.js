@@ -34,6 +34,11 @@ const unknownEndpoint = (_request, response) => {
   response.status(404).send({ error: "unknown endpoint" })
 }
 
+app.get("/health", (req, res) => {
+  res.send("ok")
+})
+
+
 app.get("/info", (_req, res) => {
   Person.countDocuments({}, (err, result) => {
     if (err) {
