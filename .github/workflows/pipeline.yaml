@@ -18,8 +18,8 @@ jobs:
           node-version: "12.x"
       - name: npm install
         run: npm install
-      - name: build
-        run: npm run build
+      - name: lint
+        run: npm run lint
       - name: Deploy to Heroku
         uses: AkhileshNS/heroku-deploy@v3.12.12
         if: ${{ github.event_name == 'push' }}
